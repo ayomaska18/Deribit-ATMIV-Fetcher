@@ -2,6 +2,8 @@ FROM python:3
 
 WORKDIR /app
 
+EXPOSE 8080
+
 RUN python -m venv venv
 
 COPY ./requirements.txt .
