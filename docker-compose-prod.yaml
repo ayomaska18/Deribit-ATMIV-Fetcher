@@ -3,8 +3,10 @@ services:
   influxdb:
     image: influxdb:2
     container_name: influxdb2
+    networks:
+      - internal
     ports:
-      - "8086:8086"
+      - "8086"
     volumes:
       - influxdb_data:/var/lib/influxdb2
     environment:
@@ -23,6 +25,9 @@ services:
     restart: unless-stopped
     ports:
       - "3000:3000"
+    networks:
+      - internal
+      - external
     volumes:
       - grafana-storage:/var/lib/grafana
       - ./app/config/grafana/provisioning:/etc/grafana/provisioning
@@ -43,13 +48,26 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    networks:
+      - internal
     ports:
-      - "8080:8080"
+      - "8080"
+    environment:
+      INFLUXDB_URL: ${INFLUXDB_URL}
+      INFLUXDB_ADMIN_TOKEN: ${INFLUXDB_ADMIN_TOKEN}
+      INFLUXDB_ORG: ${INFLUXDB_ORG}
+      INFLUXDB_BUCKET: ${INFLUXDB_BUCKET}
     env_file:
       - .env
     depends_on:
       - influxdb
       - grafana
+
+networks:
+  internal:
+    driver: bridge
+  external:
+    driver: bridge
 
 volumes:
   influxdb_data:

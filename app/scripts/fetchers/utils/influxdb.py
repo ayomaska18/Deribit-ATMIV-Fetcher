@@ -16,8 +16,12 @@ logging.basicConfig(
 INFLUXDB_URL = os.getenv("INFLUXDB_URL")
 INFLUXDB_TOKEN = os.getenv("INFLUXDB_ADMIN_TOKEN")
 INFLUXDB_ORG = os.getenv("INFLUXDB_ORG")                  
-INFLUXDB_BUCKET = os.getenv("INFLUXDB_BUCKET")     
+INFLUXDB_BUCKET = os.getenv("INFLUXDB_BUCKET")  
 
+print(f"INFLUXDB_URL: {INFLUXDB_URL}")
+print(f"INFLUXDB_TOKEN: {INFLUXDB_TOKEN}")
+print(f"INFLUXDB_ORG: {INFLUXDB_ORG}")
+print(f"INFLUXDB_BUCKET: {INFLUXDB_BUCKET}")
 
 def write_to_influxdb(timestamp: str, atm_iv: float, currency: str):
     with InfluxDBClient(url=INFLUXDB_URL, token=INFLUXDB_TOKEN, org=INFLUXDB_ORG) as client:
