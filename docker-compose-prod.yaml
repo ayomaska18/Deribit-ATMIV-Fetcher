@@ -70,7 +70,7 @@ services:
     networks:
       - external
     ports:
-      - "8080:80"
+      - "80:80"
     volumes:
       - ./app:/usr/share/nginx/html:ro
     depends_on:
