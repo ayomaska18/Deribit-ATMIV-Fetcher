@@ -22,7 +22,7 @@ This repository fetches and stores At-The-Money (ATM) Implied Volatility (IV) da
 
 ## Configuration
 
-1. Create a `.env` file in the root directory of the project. Use the following template:
+1. Create a `.env` file in the root directory of the project using the `.env.example` file. Use the following template:
 
    ```dotenv
    INFLUXDB_URL=
