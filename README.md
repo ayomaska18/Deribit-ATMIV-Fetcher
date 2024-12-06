@@ -41,10 +41,6 @@ This repository fetches and stores At-The-Money (ATM) Implied Volatility (IV) da
    GRAFANA_SERVER_SERVE_FROM_SUB_PATH=
    ```
 
-   Replace the placeholder values with your actual credentials:
-   - `DERIBIT_CLIENT_ID` and `DERIBIT_CLIENT_SECRET`: Obtain these from the [Deribit API](https://docs.deribit.com/#public-auth).
-   - `INFLUXDB_*`: Configure according to your InfluxDB setup.
-
 2. Ensure the `docker-compose.yml` file is properly set up for your environment. No changes are typically needed unless you have specific configurations.
 3. Ensure the `datasource.yaml` file token is the same as the token with `INFLUXDB_ADMIN_TOKEN`
 
